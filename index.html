@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xr Health Assistant Web.V1</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        .instructions {
+            color: #666;
+            margin: 2rem 0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Xr Health Ai Assistant</h1>
+        <p class="instructions">
+            Click the Phone button in the bottom right corner to start Talking to the Assistant.
+        </p>
+    </div>
+
+    <script>
+        var vapiInstance = null;
+        const assistant = "8a70f8bd-cce0-4e42-93de-d95f27d80e11"; // Replace with your assistant ID
+        const apiKey = "7036fb33-48bf-4e8c-a6f9-298259338783"; // Replace with your Public key
+        const buttonConfig = {
+            // Customize the widget appearance
+            position: "bottom-right",
+            size: "large",
+            theme: {
+                primaryColor: "#007bff",
+                backgroundColor: "#ffffff"
+            }
+        };
+
+        (function (d, t) {
+            var g = document.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+            g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+            g.defer = true;
+            g.async = true;
+            s.parentNode.insertBefore(g, s);
+            g.onload = function () {
+                vapiInstance = window.vapiSDK.run({
+                    apiKey: apiKey,
+                    assistant: assistant,
+                    config: buttonConfig,
+                });
+            };
+        })(document, "script");
+    </script>
+</body>
+</html>
